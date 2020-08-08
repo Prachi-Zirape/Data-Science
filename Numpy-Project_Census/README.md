@@ -1,0 +1,4 @@
+Calculating Census
+Minority Groups
+Education status
+Earnings
