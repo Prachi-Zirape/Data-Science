@@ -1,0 +1,415 @@
+#1-Write a Python program to create an array of 5 integers and display the array items. 
+#Access individual element through indexes
+
+from array import *
+
+def arrayBasics():
+    int_array=array('I',[10,20,30,40,50])
+        
+    print(int_array)
+    
+arrayBasics()
+array('I', [10, 20, 30, 40, 50])
+#solution 2 - Take user input 
+def array_basic():
+    num_array=[]
+    num=int(input())
+    for i in range(int(num)):
+        n=int(input())
+        num_array.append(int(n))
+    print(num_array)
+    
+array_basic()
+1
+1
+[1]
+str_arr = raw_input().split(' ') //will take in a string of numbers separated by a space arr = [int(num) for num in str_arr]
+
+str_arr = str(input()).split(' ') #will take in a string of numbers separated by a space
+arr = [int(num) for num in str_arr]
+3 2 1 4
+#2-Write a Python program to append a new item to the end of the array
+#Solution-either insert or append
+from array import *
+def array_append():
+    num_array=array('I',[10,20,30,40])
+    print("Please enter the number to appen")
+    n=int(input())
+    num_array.append(n)
+    num_array.insert(4,n)
+    print(num_array)
+    
+array_append()
+Please enter the number to appen
+3
+array('I', [10, 20, 30, 40, 3, 3])
+#3-Write a Python program to reverse the order of the items in the array
+#solution-1:trace index reverse (len,0)
+#solution-2:reverse() method
+#solution-3: Slicing
+
+from array import *
+def reve_order():
+    num_array=array('I',[10,20,30,40,50])
+    
+    #solution-1: trace index reverse (len,0)
+    for i in range(len(num_array)-1,-1,-1):
+        print(num_array[i])
+    
+    #solution-2: reverse() method
+    num_array.reverse()
+    print(str(num_array))
+    
+    #solution-3: Slicing
+    arr=num_array[::-1]
+    print(arr)
+reve_order()
+50
+40
+30
+20
+10
+array('I', [50, 40, 30, 20, 10])
+array('I', [10, 20, 30, 40, 50])
+#4******-Write a Python program to get the length in bytes of one array item in the internal representation
+from array import *
+def lenByte():
+    num_array=array('i',[10,20,30,5000,9])    
+    print((num_array.itemsize))
+    
+lenByte()
+4
+#5-get the current memory address and the length in elements of the buffer used to hold an array's 
+#contents and also find the size of the memory buffer in bytes
+from array import *
+array_num = array('i', [1, 3, 5, 7, 9])
+print("Original array: "+str(array_num))
+print("Current memory address and the length in elements of the buffer: "+str(array_num.buffer_info()))
+print("The size of the memory buffer in bytes: "+str(array_num.buffer_info()[1] * array_num.itemsize))
+Original array: array('i', [1, 3, 5, 7, 9])
+Current memory address and the length in elements of the buffer: (2111656537488, 5)
+The size of the memory buffer in bytes: 20
+#6-Write a Python program to get the number of occurrences of a specified element in an array.
+#solution-1:if element spotted add up to counter
+#solution-2:count() method
+
+from array import *
+def num_occr():
+    num_array=array('I',[1, 3, 5, 3, 7, 9, 3])
+    count=0
+    print("number need to count ")
+    num=int(input())
+    for i in num_array:
+        if i==num:
+            count+=1
+    print("the count of '{}' occurs '{}' times".format(num,count))
+    print(num_array.count(3))
+    
+num_occr()   
+number need to count 
+3
+the count of '3' occurs '3' times
+3
+#******7-append items from inerrable to the end of the array
+#solution-1: extend method
+from array import *
+array_num = array('i', [1, 3, 5, 7, 9])
+print("Original array: "+str(array_num))
+array_num.extend(array_num)
+print("Extended array: "+str(array_num))
+Original array: array('i', [1, 3, 5, 7, 9])
+Extended array: array('i', [1, 3, 5, 7, 9, 1, 3, 5, 7, 9])
+#8-to convert an array to an array of machine values and return the bytes representation.
+from array import *
+print("Bytes to String: ")
+x = array('b', [119, 51, 114, 101,  115, 111, 117, 114, 99, 101])
+s = x.tobytes()
+print(s)
+Bytes to String: 
+b'w3resource'
+#9- append items from a specified list
+#Solution-Create list and use append or insert maybe
+
+from array import *
+def append_List():
+    lst=[1, 3, 5, 7, 9]
+    arr=array('I',lst)
+    print(arr)
+    
+append_List()
+array('I', [1, 3, 5, 7, 9])
+#*******solution-2: fromlist method 
+from array import *
+num_list = [1, 2, 6, -8]
+array_num = array('i', [])
+print("Items in the list: " + str(num_list))
+print("Append items from the list: ")
+array_num.fromlist(num_list)
+print("Items in the array: "+str(array_num))
+Items in the list: [1, 2, 6, -8]
+Append items from the list: 
+Items in the array: array('i', [1, 2, 6, -8])
+#10-insert a new item before the second element in an existing array.
+#solution-insert method
+from array import *
+def insert_elemnt():
+    arr=array('I',[1, 3, 5, 7, 9])
+    print("Please type the number and position in array")
+    num=int(input())
+    position=int(input())
+    arr.insert(position,num)
+    print(arr)
+    
+insert_elemnt()
+Please type the number and position in array
+4
+1
+array('I', [1, 4, 3, 5, 7, 9])
+#11-remove a specified item using the index from an array
+#solution-use pop method
+from array import *
+def del_element():
+    arr=array('i',[1, 3, 5, 7, 9])
+    arr.pop(2)
+    print(arr)
+del_element()
+array('i', [1, 3, 7, 9])
+#12-remove the first occurrence of a specified element from an array
+#solution-use remove method
+from array import *
+def rem_element():
+    arr=array('i',[1, 3, 5, 7, 3,9])
+    arr.remove(3)
+    print(arr)
+rem_element()
+array('i', [1, 5, 7, 3, 9])
+#13-convert an array to an ordinary list with the same items.
+from array import *
+def arrayTolist():
+    arr=array('i',[1, 3, 5, 7, 3,9])
+    lst=arr.tolist()
+    print(lst)
+arrayTolist()
+[1, 3, 5, 7, 3, 9]
+#14-find whether a given array of integers contains any duplicate element
+#solution-1:bruteforce two for loops
+#solution-2:see if set and array has same length
+#solution-3:use count() method if count>1 then true
+from array import *
+def find_dup():
+    arr=array('i',[1, 3, 5, 7,9,3])
+   # count=0
+    for k in range(len(arr)):
+        count=0
+        for j in range (len(arr)):
+            if arr[k]==arr[j]:
+                count+=1
+                print(arr[k],count)
+                if count>1:
+                    return True
+    return False
+find_dup()
+1 1
+3 1
+3 2
+True
+#solution-2:see if set and array has same length
+def test_duplicate(array_nums):
+    nums_set = set(array_nums)    
+    return len(array_nums) != len(nums_set)     
+print(test_duplicate([1,2,3,4,5]))
+print(test_duplicate([1,2,3,4, 4]))
+print(test_duplicate([1,1,2,2,3,3,4,4,5]))
+False
+True
+True
+#15-find the first duplicate element in a given array of integers.
+from array import *
+def find_dup():
+    arr=array('i',[1, 3, 5, 7,9,3,1])
+   # count=0
+    for k in range(len(arr)):
+        count=0
+        for j in range (len(arr)):
+            if arr[k]==arr[j]:
+                count+=1
+                print(arr[k],count)
+                if count>1:
+                    return True
+    return False
+find_dup()
+1 1
+1 2
+True
+#solution-2: copy element from array to set. if set already has an element return it otherwise keep copying/adding
+from array import *
+def find_dupe():
+    arr=array('i',[1, 3, 5, 7,9])
+    set_num=set()
+    for i in range(len(arr)):
+        if arr[i] in set_num:
+            return arr[i]
+        else:
+            set_num.add(arr[i])
+    return -1
+find_dupe()
+-1
+#16-program to check whether it follows the sequence given in the patterns array
+#Pattern example:
+#For color1 = ["red", "green", "green"] and patterns = ["a", "b", "b"]
+#solution-1: use dictionary and play key value role
+#basically added keys then added values 
+from array import *
+def is_samePatterns(colors,patterns):    
+    if len(colors)!=len(patterns):
+        return False
+    sdict={}
+    pset=set()
+    sset=set()
+    for i in range(len(patterns)):
+        pset.add(patterns[i])
+       # print("pset=",pset)
+        sset.add(colors[i])
+       # print("sset=",sset)    
+        if patterns[i] not in sdict.keys():
+            sdict[patterns[i]]=[]#adding keys
+        keys=sdict[patterns[i]]
+        keys.append(colors[i])##appending values
+        sdict[patterns[i]]=keys ##now patterns are colors too 
+        
+    if len(pset)!=len(sset):
+        return False
+    
+    for values in sdict.values():
+        for i in range(len(values)-1):
+            #print("values=",values)
+            if values[i]!=values[i+1]:
+                return False
+        print("values=",values)
+    return True
+
+print(is_samePatterns(["red", 
+ "green", 
+ "y"], ["a", 
+ "b", 
+ "c"])) 
+
+print(is_samePatterns(["red", 
+ "green", 
+ "greenn"], ["a", 
+ "b", 
+ "b"]))  
+    
+sdict[patterns[i]]= ['red']
+sdict[patterns[i]]= ['green']
+sdict[patterns[i]]= ['y']
+pset= {'b', 'a', 'c'}
+sset= {'red', 'green', 'y'}
+values= dict_values([['red'], ['green'], ['y']])
+values= ['red']
+values= ['green']
+values= ['y']
+True
+sdict[patterns[i]]= ['red']
+sdict[patterns[i]]= ['green']
+sdict[patterns[i]]= ['green', 'greenn']
+pset= {'b', 'a'}
+sset= {'red', 'green', 'greenn'}
+values= dict_values([['red'], ['green', 'greenn']])
+False
+#17-Python program to find a pair with highest product from a given array of integers.
+#Original array: [1, 2, 3, 4, 7, 0, 8, 4]
+#Maximum product pair is: (7, 8)
+#solution-1:2 for loops
+#solution-2:sort array and multiply last 2 elements
+#solution-3: Use Heap 
+from array import *
+def max_prod():
+    arr=array('i',[0, -1, -2, -4, 5, 0, -6])
+    max=0
+    prod=0
+    for k in range(len(arr)):        
+        for j in range(len(arr)):            
+            prod=arr[k]*arr[j]
+            #print(prod,arr[k],arr[j])
+            if prod>max and k!=j:
+                max=prod
+                #print(max)
+    print("Maximum product is '{}'".format(max))
+max_prod()
+Maximum product is '24'
+#18-Write a Python program to create an array contains six integers. Also print all the members of the array
+from array import *
+def basics_arr():
+    arr=array('i',[0, -1, -2])
+    for i in arr:
+        print(i)
+
+basics_arr()
+0
+-1
+-2
+#19-Python program to get an array buffer information.
+from array import array
+a = array("I", (12,25))
+print("Array buffer start address in memory and number of elements.")
+print(a.buffer_info())
+Array buffer start address in memory and number of elements.
+(2035136198560, 2)
+#20-program to get the length of an array
+from array import *
+arr=array('i',[0, -1, -2])
+print(len(arr))
+3
+#21- Python program to get the array size of types unsigned integer and float
+from array import array
+a = array("I", (12,25))
+print(a.itemsize)
+a = array("f", (12.236,36.36))
+print(a.itemsize)
+4
+4
+#22-Python program to read a string and interpreting the string as an array of machine values.
+from array import array
+import binascii
+array1 = array('i', [7, 8, 9, 10])
+print('array1:', array1)
+as_bytes = array1.tobytes()
+print('Bytes:', binascii.hexlify(as_bytes))
+array2 = array('i')
+array2.frombytes(as_bytes)
+print('array2:', array2)
+array1: array('i', [7, 8, 9, 10])
+Bytes: b'0700000008000000090000000a000000'
+array2: array('i', [7, 8, 9, 10])
+#23-Python program to remove all duplicate elements from a given array and returns a new array.
+#solution-1:convert array to set and set to new array
+#solution 2:2 for loops and add unique elements to new array
+#solution 2:sort array and see if arr[i]==arr[i+1]
+#solution-3:Use dictionary function
+
+from array import *
+def rem_dup():
+    arr=array('i',[1,3,5,1,3,7,9])
+    newlist=list(dict.fromkeys(arr))
+    print(newlist)
+    
+rem_dup()
+[1, 3, 5, 7, 9]
+#24-program to find the missing number in a given array of numbers between 10 and 20
+#Original array: 10 11 12 13 14 16 17 18 19 20
+#Missing number in the said array (10-20): 15
+
+#q1-is it sorted array or unsorted
+#solution-1-if sorted then see if arr[i]=i i begins with 10
+#sum of 10 to 20=165. subtract sum of all elements from 165 and get the answer
+
+from array import *
+def missing_element():
+    arr=array('i',[10,11,12,13,14,16,17,18,19,20])
+    for i in range(len(arr)):
+        if arr[i+1]!=arr[i]+1:
+            return arr[i]+1
+print(missing_element())
+15
+ 
