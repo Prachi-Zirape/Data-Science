@@ -1,0 +1,118 @@
+#Date-08/04/22
+#https://www.geeksforgeeks.org/tail-recursion/
+#https://www.geeksforgeeks.org/recursion/#:~:text=The%20process%20in%20which%20a,%20can%20be%20solved%20quite%20easily.
+
+#1-calculate the sum of a list of numbers
+def list_sum(num_List):
+    if len(num_List) == 1:
+        return num_List[0]
+    else:  
+        #print(len(num_List),num_List[0])
+        return num_List[0] + list_sum(num_List[1:]) #list[0] changes to every length 
+        
+print(list_sum([2, 4, 5, 6, 7]))
+24
+#2-converting an Integer to a string in any base
+def to_str(n,base):
+    convert_str="0123456789ABCDEF" #hexadecimal all numbers
+    if n<base:
+        return convert_str[n]
+    else:
+        return to_str(n//base,base)+convert_str[n%base]
+print(to_str(2835,16))
+B13
+#Date 8/5/22
+#3-program of recursion list sum
+l= [1, 2, [3,4], [5,6]]
+def sum_lst(lst):
+    total=0
+    for el in lst:
+        if type(el)==list:
+            total=total+sum_lst(el)
+        else:
+            total=total+el
+    return total
+print(sum_lst(l))
+    
+21
+#4-factorial of a non-negative integer
+def fact_rec(n):
+    if n==1 or n==0:
+        return 1
+    else:
+        return n*fact_rec(n-1)
+print(fact_rec(5))
+120
+#5-Fibonacci sequence using recursion
+def fib_rec(n):
+    if n==1 or n==2:
+        return 1
+    else:
+        return fib_rec(n-1)+fib_rec(n-2)
+print(fib_rec(7))
+13
+#tail recursion
+def fib(n,a=0,b=1):
+    if n==0:
+        return a
+    elif n==1:
+        return b
+    else:
+        return fib(n-1,b,a+b)
+print(fib(9))
+34
+#6-sum of a non-negative integer.
+#sumDigits(345) -> 12  or sumDigits(45) -> 9
+def sum_dig(n):
+    if n==0:
+        return 0
+    else:
+        return(n%10+sum_dig(n//10))
+print(sum_dig(45))
+9
+#7-calculate the sum of the positive integers of n+(n-2)+(n-4)... (until n-x =< 0)
+#sum_series(6) -> 12  or sum_series(10) -> 30
+def sum_series(n):
+    if n==0:
+        return 0
+    elif n==1:
+        return 1
+    else:
+        return n+sum_series(n-2)
+print(sum_series(11))
+36
+#8-calculate the harmonic sum of n-1
+def harmnic_sum(n):
+    if n==1:
+        return 1
+    else:
+        return (1/n)+harmnic_sum(n-1)
+print(harmnic_sum(7))
+2.5928571428571425
+#9-calculate the geometric sum of n-1
+#question-what would be the base numebr?
+def geo_sum(n):
+    if n == 0:
+        return 1
+
+    return 1 / pow(3, n) + geo_sum(n-1)
+print(geo_sum(5))
+1.4979423868312758
+#10- calculate the value of 'a' to the power 'b'
+#(power(3,4) -> 81
+def pow_val(base,index):
+    if index==1:
+        return base
+    else:
+        return base*pow_val(base,index-1)
+print(pow_val(1,4))
+1
+#11-find  the greatest common divisor (gcd) of two integers
+#5,25-->5  or 8,12-->4
+def gcd_val(a,b):
+    if b==0:
+        return a
+    return gcd_val(b,a%b)    
+print(gcd_val(18,12))
+6
+ 
